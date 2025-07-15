@@ -1,8 +1,7 @@
--- init.lua
-
-require("keymaps")
-require("options")
-
+-- ~/.config/nvim/init.lua
+-------------------------------------------------
+--  Bootstrap lazy.nvim -------------------------
+-------------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -13,35 +12,17 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Plugin setup
-require("lazy").setup({
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup({
-        actions = {
-          open_file = {
-            quit_on_open = true,
-          },
-        },
-      })
-    end,
-  },
+-------------------------------------------------
+--  Load options / keymaps early  (optional) ----
+-------------------------------------------------
+require("core.options")   -- basic vim.opt settings
+require("core.keymaps")   -- mappings that do NOT need plugins
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua", "vim", "bash", "javascript", "typescript",
-          "html", "css", "json", "markdown"
-        },
-        highlight = { enable = true },
-        indent = { enable = true },
-        auto_install = true,
-      })
-    end,
-  },
+-------------------------------------------------
+--  Tell lazy.nvim to import every spec it finds
+--  under lua/plugins/*.lua
+-------------------------------------------------
+require("lazy").setup({ { import = "plugins" } }, {
+  change_detection = { notify = false },   -- example of global opts
 })
+
