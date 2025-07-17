@@ -1,15 +1,21 @@
 -- lua/plugins/treesitter.lua
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  opts = {
-    ensure_installed = {
-      "lua", "vim", "bash", "javascript", "typescript",
-      "html", "css", "json", "markdown",
-    },
-    highlight     = { enable = true },
-    indent        = { enable = true },
-    auto_install  = true,
-  },
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	opts = {
+		ensure_installed = {
+			"lua",
+			"vim",
+			"bash",
+			"javascript",
+			"typescript",
+			"html",
+			"css",
+			"json",
+			"markdown",
+		},
+		highlight = { enable = true },
+		indent = { enable = true },
+		auto_install = true,
+	},
 }
-
