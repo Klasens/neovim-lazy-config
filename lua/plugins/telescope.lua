@@ -16,7 +16,7 @@ return {
     { "<leader>fb", function() require("telescope.builtin").buffers()     end, desc = "Buffers"   },
   },
 
-  opts = function()
+    opts = function()
     local actions = require("telescope.actions")
 
     return {
@@ -24,6 +24,8 @@ return {
         prompt_prefix   = "🔍 ",
         selection_caret = " ",
         path_display    = { "smart" },
+        layout_strategy = "horizontal",
+        layout_config   = { width = 0.9 },
         mappings        = {
           i = { ["<C-h>"] = actions.which_key, ["<C-p>"] = actions.close },
           n = { ["<C-p>"] = actions.close },
@@ -31,8 +33,7 @@ return {
       },
       pickers = {
         find_files = {
-          theme        = "ivy",
-          previewer    = false,
+          previewer    = true,
           find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
         },
       },
@@ -43,4 +44,3 @@ return {
     require("telescope").setup(opts)
   end,
 }
-
