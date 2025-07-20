@@ -1,18 +1,22 @@
 -- lua/plugins/conform.lua
-
 return {
 	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
+	-- load on first buffer read / new file,
+	-- not on the *first* save
+	event = { "BufReadPre", "BufNewFile" },
+
+	-- OR simply:  lazy = false,
+
 	opts = {
 		format_on_save = {
-			timeout_ms = 500,
+			timeout_ms = 2000, -- give Prettier more time
 			lsp_fallback = true,
 		},
 		formatters_by_ft = {
+			json = { "prettier" }, -- or { "prettierd", "prettier" },
 			lua = { "stylua" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
-			json = { "prettier" },
 			html = { "prettier" },
 			css = { "prettier" },
 			markdown = { "prettier" },

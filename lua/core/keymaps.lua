@@ -12,6 +12,7 @@ vim.keymap.set("v", "<C-c>", '"+y', { silent = true })
 vim.keymap.set("n", "<C-l>", 'ggVG"+y')
 
 -- Clipboard integration for WSL users
+--[[
 vim.g.clipboard = {
 	name = "clip-wsl",
 	copy = { ["+"] = "clip.exe", ["*"] = "clip.exe" },
@@ -21,6 +22,7 @@ vim.g.clipboard = {
 	},
 	cache_enabled = 0,
 }
+]]
 
 -- Scrolling and window management
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
