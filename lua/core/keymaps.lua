@@ -24,6 +24,9 @@ vim.g.clipboard = {
 }
 ]]
 
+-- Clear search highlights
+vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>", { noremap = true, silent = true })
+
 -- Scrolling and window management
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-f>", "<C-f>zz")
