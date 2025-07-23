@@ -5,7 +5,7 @@
 vim.g.mapleader = " "
 
 -- Toggle Nvim-Tree (plugin will supply the command later)
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { silent = true })
+vim.keymap.set("n", "<leader>e", "<cmd>Ex<cr>", { silent = true })
 
 -- Copy Mappings
 vim.keymap.set("v", "<C-c>", '"+y', { silent = true })
