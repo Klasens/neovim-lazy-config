@@ -14,6 +14,7 @@ return {
 			"css",
 			"json",
 			"markdown",
+			"markdown_inline", -- <- **needed for render‑markdown**
 		},
 		highlight = { enable = true },
 		indent = { enable = true },

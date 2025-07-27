@@ -19,18 +19,18 @@ return {
 			desc = "Find files",
 		},
 		{
-			"<C-g>",
+			"<leader>p",
 			function()
-				require("telescope.builtin").live_grep()
+				require("telescope.builtin").git_files()
 			end,
-			desc = "Live grep",
+			desc = "Git files",
 		},
 		{
-			"<leader>fb",
+			"<leader>g",
 			function()
-				require("telescope.builtin").buffers()
+				require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
 			end,
-			desc = "Buffers",
+			desc = "Grep input",
 		},
 	},
 
@@ -45,8 +45,11 @@ return {
 				layout_strategy = "horizontal",
 				layout_config = { width = 0.9 },
 				mappings = {
-					i = { ["<C-h>"] = actions.which_key, ["<C-p>"] = actions.close },
-					n = { ["<C-p>"] = actions.close },
+					i = {
+						["<C-j>"] = actions.move_selection_next,
+						["<C-k>"] = actions.move_selection_previous,
+						["jk"] = actions.close,
+					},
 				},
 			},
 			pickers = {
